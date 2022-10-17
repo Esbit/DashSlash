@@ -6,6 +6,33 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_DashSlash/Content/Scenes/Game.unity
+    path: Assets/Scenes/Intro.unity
+    guid: 30e43fe53b0b5bc4c8affb89b96b276a
+  - enabled: 1
+    path: Assets/Scenes/MENU.unity
+    guid: bcae20cd35d834624ac2a847bfe7dec6
+  - enabled: 1
+    path: Assets/Scenes/CARGANDO.unity
+    guid: 59a2f4c3c2f614d25b24930c6344008e
+  - enabled: 1
+    path: Assets/Scenes/CHARACTERS.unity
+    guid: 7d2a035440c0a475c9cf19474e2a75a3
+  - enabled: 1
+    path: Assets/Scenes/Game Selector.unity
+    guid: b96a47051c5734e5aa3620d59135a715
+  - enabled: 1
+    path: Assets/Scenes/JUEGO.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/SHOP.unity
+    guid: d77e0d74de7c04bbd8c2ccbc64000ea6
+  - enabled: 1
+    path: Assets/Scenes/HOW TO PLAY.unity
+    guid: c71f5089ba671404d9f2c535c9b742a0
+  - enabled: 1
+    path: Assets/Scenes/CREDITS.unity
+    guid: fd74163dffff04af588d1d51825c3ef0
+  - enabled: 1
+    path: Assets/Scenes/COMING SOON.unity
+    guid: 2c4a0471a83954cbfba445e368a0dded
   m_configObjects: {}
