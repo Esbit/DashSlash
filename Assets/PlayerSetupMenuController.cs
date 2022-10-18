@@ -70,13 +70,13 @@ public class PlayerSetupMenuController : MonoBehaviour
     // Called once per frame
     void Update()
     {
-        //if (SkinIndex != null)
-        //{
-        //    mesh = meshList[SkinIndex];
-        //    charRender = charSelector.GetComponent<SkinnedMeshRenderer>();
-        //    charRender.sharedMesh = mesh;
-        //}
-        //Debug.Log("Skin Name: " + mesh.name);
+        if (SkinIndex != null)
+        {
+            mesh = meshList[SkinIndex];
+            charRender = charSelector.GetComponent<SkinnedMeshRenderer>();
+            charRender.sharedMesh = mesh;
+        }
+        Debug.Log("Skin Name: " + mesh.name);
         Debug.Log("");
     }
 
