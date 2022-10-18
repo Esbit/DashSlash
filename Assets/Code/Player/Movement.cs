@@ -235,10 +235,10 @@ public class Movement : MonoBehaviour
     private IEnumerator DashCoroutine()
     {
         float startTime = Time.time; // need to remember this to know how long to dash
-        Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized;
+        //Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized;
         while (Time.time < startTime + dashTime)
         {
-            controller.Move(move * dashPower * Time.deltaTime);
+            controller.Move(transform.forward * dashPower * Time.deltaTime);
             // or controller.Move(...), dunno about that script
             yield return null; // this will make Unity stop here and continue next frame
         }
