@@ -232,7 +232,7 @@ MonoBehaviour:
     m_ActionId: fb2092f6-b905-4de6-a654-e13a6eef1a9f
     m_ActionName: Player/Dash[/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Controller
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -270,10 +270,10 @@ MonoBehaviour:
   playerSpeed: 0.75
   gravityValue: -9.81
   turnSmoothTime: 0.1
-  dashCoolDown: 5
-  dashPower: 10
-  dashPowerMax: 20
-  dashPowerMin: 10
+  dashCoolDown: 2
+  dashPower: 0
+  dashPowerMax: 15
+  dashPowerMin: 2
   dashTime: 0.2
   chargeTime: 4
   slashTime: 3

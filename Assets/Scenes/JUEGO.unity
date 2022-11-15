@@ -978,8 +978,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.3499006, y: -0.07568565, z: 0.02837528, w: 0.93329316}
-  m_LocalPosition: {x: 0.8206256, y: 5.356164, z: -5.7546496}
+  m_LocalRotation: {x: 0.3499006, y: -0.07568565, z: 0.028375281, w: 0.93329316}
+  m_LocalPosition: {x: 0.8199394, y: 5.3524485, z: -5.750447}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2390,7 +2390,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679977829}
-  m_LocalRotation: {x: 0.3499006, y: -0.07568565, z: 0.02837528, w: 0.93329316}
+  m_LocalRotation: {x: 0.3499006, y: -0.07568565, z: 0.028375281, w: 0.93329316}
   m_LocalPosition: {x: 0.9068127, y: 5.8228273, z: -6.2825494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -11381,6 +11381,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dino
       objectReference: {fileID: 0}
+    - target: {fileID: 5643076816821024096, guid: f3d9a167f455814448744de9bb651fc5,
+        type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643076816821024096, guid: f3d9a167f455814448744de9bb651fc5,
+        type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5643076816821024098, guid: f3d9a167f455814448744de9bb651fc5,
         type: 3}
       propertyPath: m_RootOrder
@@ -11517,6 +11527,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5672416226668362225, guid: f5f9ddfc73518874fab36e2d82627035,
+        type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5672416226668362226, guid: f5f9ddfc73518874fab36e2d82627035,
         type: 3}
       propertyPath: m_Name
@@ -11535,6 +11550,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Alce
+      objectReference: {fileID: 0}
+    - target: {fileID: 215950638299672870, guid: a1de214e540d25441a66c2ed862de3f6,
+        type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 699436019114486682, guid: a1de214e540d25441a66c2ed862de3f6,
         type: 3}
@@ -11617,6 +11637,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lobo
       objectReference: {fileID: 0}
+    - target: {fileID: 9000391671740892946, guid: 391cb9ad8b289ff46bf76bc44161c443,
+        type: 3}
+      propertyPath: dashPowerMin
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 9000391671740892950, guid: 391cb9ad8b289ff46bf76bc44161c443,
         type: 3}
       propertyPath: m_RootOrder
@@ -11671,6 +11696,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000391671740892956, guid: 391cb9ad8b289ff46bf76bc44161c443,
+        type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 391cb9ad8b289ff46bf76bc44161c443, type: 3}

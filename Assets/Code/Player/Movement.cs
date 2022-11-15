@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
     [SerializeField]
     float dashCoolDown = 5f;
     [SerializeField]
-    float dashPower = 10;
+    float dashPower;
     [SerializeField]
     float dashPowerMax = 30;
     [SerializeField]
@@ -156,10 +156,6 @@ public class Movement : MonoBehaviour
                 var chargeAudioClip = chargeClips[UnityEngine.Random.Range(0, chargeClips.Length)];
                 audioSource.PlayOneShot(chargeAudioClip);
             }
-            if (dashPower <= dashPowerMin)
-                dashPower = dashPowerMin;
-            if (dashPower >= dashPowerMax)
-                dashPower = dashPowerMax;
             if (_timePressingDash > 4.0f)
             {
                 _isPressingDash = false;
@@ -218,6 +214,10 @@ public class Movement : MonoBehaviour
         //when released button
         if (_isPressingDash && context.action.WasReleasedThisFrame())
         {
+            if (dashPower <= dashPowerMin)
+                dashPower = dashPowerMin;
+            if (dashPower >= dashPowerMax)
+                dashPower = dashPowerMax;
             audioSource.Stop();
             _chargeTimer = (Time.time / 0.1f);
             animator.SetBool(isChargingHash, false);
@@ -235,7 +235,7 @@ public class Movement : MonoBehaviour
     private IEnumerator DashCoroutine()
     {
         float startTime = Time.time; // need to remember this to know how long to dash
-        Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized;
+        Vector3 move = transform.forward; //new Vector3(movementInput.x, 0, movementInput.y).normalized;
         while (Time.time < startTime + dashTime)
         {
             controller.Move(move * dashPower * Time.deltaTime);
