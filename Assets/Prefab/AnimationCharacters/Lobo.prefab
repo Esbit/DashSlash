@@ -1304,7 +1304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xRotation: 0
-  playerSpeed: 0.75
+  playerSpeed: 2.2
   gravityValue: -9.81
   turnSmoothTime: 0.1
   dashCoolDown: 2

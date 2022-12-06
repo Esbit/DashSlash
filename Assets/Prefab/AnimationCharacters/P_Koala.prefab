@@ -602,13 +602,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   xRotation: 0
-  playerSpeed: 0.75
+  playerSpeed: 2
   gravityValue: -9.81
   turnSmoothTime: 0.1
   dashCoolDown: 2
   dashPower: 0
   dashPowerMax: 15
-  dashPowerMin: 2
+  dashPowerMin: 2.2
   dashTime: 0.2
   chargeTime: 4
   slashTime: 3
