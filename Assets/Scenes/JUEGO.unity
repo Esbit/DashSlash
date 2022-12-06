@@ -2171,7 +2171,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: ed8f582f9d4b23d4ca3ff69b19b72e48, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -9545,11 +9545,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5672416226668362225, guid: f5f9ddfc73518874fab36e2d82627035,
+        type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672416226668362225, guid: f5f9ddfc73518874fab36e2d82627035,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672416226668362225, guid: f5f9ddfc73518874fab36e2d82627035,
+        type: 3}
+      propertyPath: m_NeverAutoSwitchControlSchemes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672416226668362225, guid: f5f9ddfc73518874fab36e2d82627035,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionId
+      value: 86691ea9-fd35-4540-b2af-e8a6dbd1ecd6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672416226668362225, guid: f5f9ddfc73518874fab36e2d82627035,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionId
+      value: d6ccfb41-ffa4-4159-a223-636bc2a12415
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672416226668362225, guid: f5f9ddfc73518874fab36e2d82627035,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
+      value: c0772063-6d92-461d-be00-131130f95136
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672416226668362225, guid: f5f9ddfc73518874fab36e2d82627035,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_ActionName
+      value: UI/Navigation[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down,/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672416226668362225, guid: f5f9ddfc73518874fab36e2d82627035,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[4].m_ActionName
+      value: UI/Submit[/XInputControllerWindows/buttonSouth,/Keyboard/enter]
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672416226668362225, guid: f5f9ddfc73518874fab36e2d82627035,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
+      value: UI/Cancel[/XInputControllerWindows/buttonEast,/Keyboard/escape]
+      objectReference: {fileID: 0}
     - target: {fileID: 5672416226668362226, guid: f5f9ddfc73518874fab36e2d82627035,
         type: 3}
       propertyPath: m_Name
       value: PF_PlayerCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 5914151438640618258, guid: f5f9ddfc73518874fab36e2d82627035,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: b88542675554c07439da6575d115dd05, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f5f9ddfc73518874fab36e2d82627035, type: 3}
 --- !u!1 &1243561270
@@ -10880,6 +10930,66 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1890371134}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1905010631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1905010634}
+  - component: {fileID: 1905010633}
+  - component: {fileID: 1905010632}
+  m_Layer: 0
+  m_Name: VisualScripting SceneVariables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1905010632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905010631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765181c9ef4b24d32a4f7cbd2ef370dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1905010633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905010631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Scene","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
+--- !u!4 &1905010634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905010631}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1908950454
 GameObject:
   m_ObjectHideFlags: 0

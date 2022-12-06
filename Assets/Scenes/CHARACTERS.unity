@@ -281,6 +281,66 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &341445839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 341445842}
+  - component: {fileID: 341445841}
+  - component: {fileID: 341445840}
+  m_Layer: 0
+  m_Name: VisualScripting SceneVariables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &341445840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341445839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765181c9ef4b24d32a4f7cbd2ef370dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &341445841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341445839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _data:
+    _json: '{"declarations":{"Kind":"Scene","collection":{"$content":[],"$version":"A"},"$version":"A"}}'
+    _objectReferences: []
+--- !u!4 &341445842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 341445839}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &347451258
 GameObject:
   m_ObjectHideFlags: 0
@@ -293,7 +353,6 @@ GameObject:
   - component: {fileID: 347451259}
   - component: {fileID: 347451262}
   - component: {fileID: 347451261}
-  - component: {fileID: 347451260}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -344,18 +403,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &347451260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 347451258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bd30513fe2bd044d8c8c3cbb5f84317, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &347451261
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,7 +471,7 @@ GameObject:
   - component: {fileID: 445296975}
   - component: {fileID: 445296974}
   m_Layer: 5
-  m_Name: CharSelector
+  m_Name: CharacterSelector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -463,26 +510,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64fc5f83999895a4c978a53e5f9df179, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  charSelector: {fileID: 745904058}
-  playerInput: {fileID: 445296975}
-  uINavigation: {fileID: 6160474668901930443, guid: a23da31eaa8603f4c80d8819714389db,
-    type: 3}
-  selectedBinding: 0
-  inputBinding:
-    m_Name: Joystick
-    m_Id: 70b9853d-9d3b-49e6-aeae-b89b6334eafa
-    m_Path: 2DVector(mode=1)
-    m_Interactions: 
-    m_Processors: 
-    m_Groups: 
-    m_Action: Navigation
-    m_Flags: 4
+  characterMesh: {fileID: 745904058}
+  SkinIndex: 0
   meshList:
   - {fileID: 4300000, guid: 258463afc2ab5c84980bf3c5cefac73e, type: 2}
   - {fileID: 4300000, guid: 7e5d6243d4a1d46498b3d3c45e616afd, type: 2}
   - {fileID: 4300000, guid: b88542675554c07439da6575d115dd05, type: 2}
   - {fileID: 4300000, guid: 414cd4720e581b744af8cc391e8992d6, type: 2}
-  SkinIndex: 0
+  matList:
+  - {fileID: 2100000, guid: d71bbc69158c941ef8c5f76bd776a672, type: 2}
+  - {fileID: 2100000, guid: 90666ca01e6d94ac4a0d5ac4fcfd6530, type: 2}
+  - {fileID: 2100000, guid: dd60c1d8294944361a6b8826f8e1abe3, type: 2}
+  - {fileID: 2100000, guid: 924f233209b6443039a0cae8b5bdfd98, type: 2}
 --- !u!114 &445296975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -508,7 +547,31 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f6733724-699d-454f-896b-7b015debe0da
+    m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows/leftStick]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4992e85d-7dca-439b-87b2-beed97856076
+    m_ActionName: Player/Attack[/Keyboard/e,/XInputControllerWindows/rightTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: fb2092f6-b905-4de6-a654-e13a6eef1a9f
+    m_ActionName: Player/Dash[/XInputControllerWindows/leftTrigger]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 86691ea9-fd35-4540-b2af-e8a6dbd1ecd6
+    m_ActionName: UI/Navigation[/XInputControllerWindows/leftStick,/XInputControllerWindows/dpad/up,/XInputControllerWindows/dpad/down,/XInputControllerWindows/dpad/left,/XInputControllerWindows/dpad/right,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d6ccfb41-ffa4-4159-a223-636bc2a12415
+    m_ActionName: UI/Submit[/XInputControllerWindows/buttonSouth,/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: c0772063-6d92-461d-be00-131130f95136
+    m_ActionName: UI/Cancel[/XInputControllerWindows/buttonEast,/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: UI
@@ -910,6 +973,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 445296973}
     m_Modifications:
+    - target: {fileID: 1374588517324634418, guid: 77375aabb9c046a4089314b930aba5fb,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: c394fd8645beda846ab3ed79f7030a41, type: 3}
     - target: {fileID: 5040557322305987400, guid: 77375aabb9c046a4089314b930aba5fb,
         type: 3}
       propertyPath: m_RootOrder
