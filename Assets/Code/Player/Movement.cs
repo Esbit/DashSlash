@@ -74,7 +74,7 @@ public class Movement : MonoBehaviour
     private bool _isPressingDash;
     private bool attackinput;
     private bool _isWalking;
-
+    private bool collisionAnotherPlayer =false;
     //Anim
     public Animator animator;
     public Animation anim;
@@ -220,7 +220,7 @@ public class Movement : MonoBehaviour
                 dashPower = dashPowerMax;
             audioSource.Stop();
             _chargeTimer = (Time.time / 0.1f);
-            animator.SetBool(isChargingHash, false);
+            animator.SetBool(isChargingHash, true);
             animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0, _chargeTimer));
             nextDashTime = Time.time;
             _isPressingDash = false;
@@ -230,7 +230,21 @@ public class Movement : MonoBehaviour
         StopCoroutine(DashCoroutine());
         StopCoroutine(SlashCoroutine());
     }
+    public void OnTriggerEnter(Collider other)
+    {
 
+            if (other.transform.tag == "Player" && other.transform.gameObject != this.gameObject)
+            {
+               collisionAnotherPlayer = true;
+            }
+    }
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.transform.tag == "Player" && other.transform.gameObject != this.gameObject)
+        {
+            collisionAnotherPlayer = false;
+        }
+    }
     //Slash & Dash Coroutines
     private IEnumerator DashCoroutine()
     {
@@ -238,10 +252,19 @@ public class Movement : MonoBehaviour
         Vector3 move = transform.forward; //new Vector3(movementInput.x, 0, movementInput.y).normalized;
         while (Time.time < startTime + dashTime)
         {
-            controller.Move(move * dashPower * Time.deltaTime);
+            if (collisionAnotherPlayer)
+            {
+                break;
+            }
+            else
+            {
+                controller.Move(move * dashPower * Time.deltaTime);
+
+            }
             // or controller.Move(...), dunno about that script
             yield return null; // this will make Unity stop here and continue next frame
         }
+
     }
     private IEnumerator SlashCoroutine()
     {

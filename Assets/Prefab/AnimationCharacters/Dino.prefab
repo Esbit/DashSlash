@@ -280,7 +280,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3118930642964303061}
   m_LocalRotation: {x: 0.5435164, y: -0.19693364, z: -0.123987354, w: 0.806495}
-  m_LocalPosition: {x: -0.16320781, y: 1.5543122e-16, z: 8.881784e-16}
+  m_LocalPosition: {x: -0.16320781, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -634,6 +634,7 @@ GameObject:
   - component: {fileID: 5643076816821024100}
   - component: {fileID: 5643076816821024101}
   - component: {fileID: 5643076816821024102}
+  - component: {fileID: 3366531368508427759}
   m_Layer: 7
   m_Name: Dino
   m_TagString: Untagged
@@ -989,6 +990,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumHealth: 1
   health: 0
+--- !u!65 &3366531368508427759
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4979834242229579736}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.4733902, z: 1}
+  m_Center: {x: -0, y: 1.3539747, z: 0}
 --- !u!1 &5821923678490493422
 GameObject:
   m_ObjectHideFlags: 0

@@ -526,6 +526,7 @@ GameObject:
   - component: {fileID: 5672416226668362225}
   - component: {fileID: 5672416226668362239}
   - component: {fileID: 5672416226668362236}
+  - component: {fileID: 4320260999479525811}
   m_Layer: 3
   m_Name: P_Koala
   m_TagString: Untagged
@@ -894,6 +895,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumHealth: 1
   health: 0
+--- !u!65 &4320260999479525811
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5672416226668362226}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.4733902, z: 1}
+  m_Center: {x: -0, y: 1.3539747, z: 0}
 --- !u!1 &5789990027850029394
 GameObject:
   m_ObjectHideFlags: 0

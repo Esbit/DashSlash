@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 215950638299672868}
   - component: {fileID: 215950638299672867}
   - component: {fileID: 215950638299672866}
+  - component: {fileID: 2800403170380998496}
   m_Layer: 8
   m_Name: Alce
   m_TagString: Untagged
@@ -371,6 +372,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumHealth: 1
   health: 0
+--- !u!65 &2800403170380998496
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 215950638299672864}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.4733902, z: 1}
+  m_Center: {x: -0, y: 1.3539747, z: 0}
 --- !u!1 &454442742252615569
 GameObject:
   m_ObjectHideFlags: 0
