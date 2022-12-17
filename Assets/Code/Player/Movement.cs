@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-[RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(Rigidbody))]
 public class Movement : MonoBehaviour
 {
     [Header("Player Movement")]
@@ -16,6 +16,8 @@ public class Movement : MonoBehaviour
     private float gravityValue = -9.81f;
     [SerializeField]
     private float turnSmoothTime = 0.1f;
+
+
     [Header("Player Dash")]
     [SerializeField]
     float dashCoolDown = 5f;
@@ -26,14 +28,31 @@ public class Movement : MonoBehaviour
     [SerializeField]
     float dashPowerMin = 10;
     [SerializeField]
+    float dashPowerDelta = 1.5f;
+    [SerializeField]
     float dashTime = 0.2f;
     [SerializeField]
     float chargeTime = 4f;
+    [SerializeField]
+    GameObject dashIndicator; // An object in the ground that helps visualize how far the dash will go
+
+
     [Header("Player Slash")]
     [SerializeField]
     float slashTime = 3f;
+
+    [Header("Player Bounce")]
+    [SerializeField]
+    float bounceTime = 5f;
+    [SerializeField]
+    float bounceMinForce = 15f;
+    // TODO bounceMaxForce
+
+
     [Header("Audio")]
     public AudioSource audioSource;
+    
+    
     [Header("Clips")]
     public AudioClip[] walkingClips;
     public AudioClip[] dashClips;
@@ -62,31 +81,40 @@ public class Movement : MonoBehaviour
     private float _timePressingDash;
     private float _chargeTimer;
 
-    public CharacterController controller;
-    private Vector3 playerVelocity;
-    
+    private Vector3 playerVelocity;    
 
     private Vector2 movementInput = Vector2.zero;
 
     private bool groundedPlayer;
     private bool dash = false;
+    private bool _isDashing = false;
+    private bool _isBouncing = false;
     private bool _canAttack;
     private bool _isPressingDash;
     private bool attackinput;
     private bool _isWalking;
-    private bool collisionAnotherPlayer =false;
+    private bool collisionAnotherPlayer = false;
+    private Rigidbody rb;
+    private Coroutine dashCoroutine;
+    private Coroutine slashCoroutine;
+    private Coroutine bounceCoroutine;
+    
     //Anim
     public Animator animator;
     public Animation anim;
-    int isWalkingHash;
+
+    // References to each parameter in the Animator of this character
+    int isWalkingHash; 
     int isSlashingHash;
     int isChargingHash;
     int isDashingHash;
     int isDeadHash;
     int isStunnedHash;
+
+
     private void Start()
     {
-        controller = gameObject.GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
         nextDashTime = 0;
         lastPlayTime = 0;
         _canAttack = false;
@@ -102,7 +130,6 @@ public class Movement : MonoBehaviour
         isDashingHash = Animator.StringToHash("isDashing");
         isDeadHash = Animator.StringToHash("isDead");
         isStunnedHash = Animator.StringToHash("isStunned");
-
     }
 
 
@@ -117,39 +144,46 @@ public class Movement : MonoBehaviour
         bool isStunned = animator.GetBool(isStunnedHash);
 
         //movement
-        groundedPlayer = controller.isGrounded;
+        groundedPlayer = IsGrounded();
         if (groundedPlayer && playerVelocity.y < 0 )
         {            
             playerVelocity.y = 0f;
         }
 
-        //if (movementInput != null && Time.time - lastPlayTime > 0.5f)
-        //{
-        //    lastPlayTime = Time.time;
-        //    PlayWalkingSFX();
-        //}
+        Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized * playerSpeed;
 
-        Vector3 move = new Vector3(movementInput.x, 0, movementInput.y).normalized;
-        controller.Move(move * Time.deltaTime * playerSpeed);
-
-
-        //rotation
-        if (move != Vector3.zero)
+        // If the player can move or if dash is charging, then change its direction
+        if(CanMove() || _isPressingDash)
         {
-            float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(xRotation, angle, 0f);
+            //Rotate to target direction
+            if (move != Vector3.zero)
+            {
+                float targetAngle = Mathf.Atan2(move.x, move.z) * Mathf.Rad2Deg;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                transform.rotation = Quaternion.Euler(xRotation, angle, 0f);
+            }
         }
-        
-        //when pressing dash button
-        if(_isPressingDash)
+
+        // If the player can move, then change its velocity
+        if (CanMove())
         {
+            // Actually move, don't forget to add the gravity
+            rb.velocity = move + Vector3.up * rb.velocity.y;
+        }
+
+        //when pressing dash button
+        if (_isPressingDash)
+        {
+            dashIndicator.SetActive(true);
+
             animator.SetBool(isChargingHash, true);
             _timePressingDash += Time.deltaTime;
             _chargeTimer = (Time.time / 0.1f);
             animator.SetLayerWeight(1,Mathf.Lerp(0,0.6f, _chargeTimer));
+
+            dashIndicator.transform.position = transform.position + transform.forward * _timePressingDash + Vector3.up * 0.1f;
             
-            dashPower = dashPower + 0.2f;
+            dashPower += dashPowerDelta * Time.deltaTime;
             if (_isPressingDash && Time.time - lastPlayTime > 4.0f)
             {
                 lastPlayTime = Time.time;
@@ -165,6 +199,8 @@ public class Movement : MonoBehaviour
                 //   animator.SetBool(isStunnedHash, false);
                 //nextDashTime = Time.time;
                 ExecuteBadDash();
+
+                dashIndicator.SetActive(false);
             }
         }
         // if (attackinput)
@@ -180,7 +216,40 @@ public class Movement : MonoBehaviour
         else
             animator.SetBool(isWalkingHash, false);
         playerVelocity.y += gravityValue * Time.deltaTime;
-        controller.Move(playerVelocity * Time.deltaTime);
+        
+        // Why move twice in the same update???
+        //controller.Move(playerVelocity * Time.deltaTime);
+    }
+
+    /// <summary>
+    /// Checks if the character is touching the ground
+    /// </summary>
+    /// <returns>true if the character is on the ground, false otherwise</returns>
+    private bool IsGrounded()
+    {
+        RaycastHit hit;
+        if(Physics.SphereCast(transform.position + Vector3.up, 0.5f, Vector3.down, out hit, 1.05f))
+        {
+            // Should it check if what's below is actually ground?
+            return true;
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// Checks if this character can move on its own
+    /// If no cooldowns or special conditions apply, the character can move
+    /// </summary>
+    /// <returns></returns>
+    private bool CanMove()
+    {
+        bool canMove = true;
+
+        canMove = canMove && !_isPressingDash;
+        canMove = canMove && !_isDashing;
+        canMove = canMove && !_isBouncing;
+
+        return canMove;
     }
 
     //When Move input
@@ -214,6 +283,8 @@ public class Movement : MonoBehaviour
         //when released button
         if (_isPressingDash && context.action.WasReleasedThisFrame())
         {
+            dashIndicator.SetActive(false);
+
             if (dashPower <= dashPowerMin)
                 dashPower = dashPowerMin;
             if (dashPower >= dashPowerMax)
@@ -227,44 +298,65 @@ public class Movement : MonoBehaviour
             _canAttack = true;
             ExecuteDash(Mathf.Clamp(_timePressingDash, 0.5f, 4f));
         }
-        StopCoroutine(DashCoroutine());
-        StopCoroutine(SlashCoroutine());
     }
-    public void OnTriggerEnter(Collider other)
+    
+    public void Bounce(Vector3 direction)
     {
+        rb.velocity = direction * bounceMinForce;
+        bounceCoroutine = StartCoroutine(BounceCoroutine());
+    }
 
-            if (other.transform.tag == "Player" && other.transform.gameObject != this.gameObject)
-            {
-               collisionAnotherPlayer = true;
-            }
-    }
-    public void OnTriggerExit(Collider other)
+    public void OnCollisionEnter(Collision collision)
     {
-        if (other.transform.tag == "Player" && other.transform.gameObject != this.gameObject)
+        if(collision.collider.tag == "Player")
         {
-            collisionAnotherPlayer = false;
+            if(_isDashing) // Make the other player bounce!
+            {
+                // Stop dashing
+                StopCoroutine(dashCoroutine);
+                _isDashing = false;
+                rb.velocity = Vector3.zero;
+
+                // Make the other guy bounce in the direction of the hit
+                Vector3 bounceDir = (collision.collider.transform.position - transform.position).normalized;
+                collision.collider.GetComponent<Movement>().Bounce(bounceDir);
+            }
+        }
+        else
+        {
+            if(_isBouncing)
+            {
+                // Reflect the vector
+                rb.velocity = Vector3.Reflect(rb.velocity, collision.GetContact(0).normal);
+            }
         }
     }
+
+
+
     //Slash & Dash Coroutines
     private IEnumerator DashCoroutine()
     {
+        _isDashing = true;
         float startTime = Time.time; // need to remember this to know how long to dash
         Vector3 move = transform.forward; //new Vector3(movementInput.x, 0, movementInput.y).normalized;
         while (Time.time < startTime + dashTime)
         {
             if (collisionAnotherPlayer)
             {
+                rb.velocity = Vector3.zero;
                 break;
             }
             else
             {
-                controller.Move(move * dashPower * Time.deltaTime);
-
+                // TODO change Dash to work with Rigidbody
+                //controller.Move(move * dashPower * Time.deltaTime);
+                rb.velocity = transform.forward * dashPower;
             }
             // or controller.Move(...), dunno about that script
             yield return null; // this will make Unity stop here and continue next frame
         }
-
+        _isDashing = false;
     }
     private IEnumerator SlashCoroutine()
     {
@@ -273,12 +365,34 @@ public class Movement : MonoBehaviour
         Debug.Log("Time's UP");
     }
 
+    private IEnumerator BounceCoroutine()
+    {
+        print("START BOUNCING!!");
+
+        _isBouncing = true;
+
+        float startTime = Time.time;
+        while (Time.time < startTime + bounceTime)
+        {
+            // TODO allow bounceForce to grow if the player is hit more than once
+            // TODO validate if hitting a bouncing player is possible and fun
+
+            // While the player is bouncing, maintain the bounceSpeed
+            rb.velocity = rb.velocity.normalized * bounceMinForce;
+            yield return null;
+        }
+
+        _isBouncing = false;
+
+        print("STOP BOUNCING!!");
+    }
+
     //Dash
     private void ExecuteDash(float timePressingDash)
     {
         //Debug.Log("DashPower: " + dashPower);
-        StartCoroutine(DashCoroutine());
-        StartCoroutine(SlashCoroutine());
+        dashCoroutine = StartCoroutine(DashCoroutine());
+        slashCoroutine = StartCoroutine(SlashCoroutine());
     }
 
     private void ExecuteBadDash()
@@ -317,11 +431,11 @@ public class Movement : MonoBehaviour
         {
             foreach (Collider enemy in enemies)
             {
-                DamageableController controller = enemy.GetComponent<DamageableController>();
+                DamageableController damageable = enemy.GetComponent<DamageableController>();
 
-                if (controller != null)
+                if (damageable != null)
                 {
-                    controller.TakeDamage(damage);
+                    damageable.TakeDamage(damage);
                     animator.SetBool(isChargingHash, false);
                     animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0, _chargeTimer));
                 }
