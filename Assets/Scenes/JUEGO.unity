@@ -9630,6 +9630,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Almohadilla Roja
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 73908839387e04668b04c053d3c1e995,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73908839387e04668b04c053d3c1e995, type: 3}
 --- !u!4 &1331071010 stripped
@@ -9637,12 +9642,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 73908839387e04668b04c053d3c1e995,
     type: 3}
   m_PrefabInstance: {fileID: 1331071009}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1374658627 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8623267552051617196, guid: 391cb9ad8b289ff46bf76bc44161c443,
-    type: 3}
-  m_PrefabInstance: {fileID: 8098384893163278805}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1378520828
 PrefabInstance:
@@ -11462,11 +11461,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5643076816821024100, guid: f3d9a167f455814448744de9bb651fc5,
-        type: 3}
-      propertyPath: whatIsEnemy.m_Bits
-      value: 328
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3d9a167f455814448744de9bb651fc5, type: 3}
 --- !u!4 &902108252897220291 stripped
@@ -11475,19 +11469,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8098384893163278805}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &902108252897220299
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1374658627}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1.4733902, z: 1}
-  m_Center: {x: -0, y: 1.3539747, z: 0}
 --- !u!4 &1354735768543405362 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 699436019114486682, guid: a1de214e540d25441a66c2ed862de3f6,
@@ -11690,11 +11671,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 9000391671740892946, guid: 391cb9ad8b289ff46bf76bc44161c443,
-        type: 3}
-      propertyPath: dashPowerMin
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9000391671740892950, guid: 391cb9ad8b289ff46bf76bc44161c443,
         type: 3}
