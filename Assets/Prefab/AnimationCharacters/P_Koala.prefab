@@ -566,7 +566,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 353dafbccb708ce46a071af609b2d313, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -802,7 +802,7 @@ MonoBehaviour:
   chargeTime: 4
   dashIndicator: {fileID: 6727546665356687296}
   slashTime: 3
-  bounceTime: 5
+  bounceTime: 2
   bounceMinForce: 15
   audioSource: {fileID: 5672416226668362239}
   walkingClips:

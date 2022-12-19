@@ -897,7 +897,7 @@ MonoBehaviour:
   chargeTime: 4
   dashIndicator: {fileID: 4369596767325666279}
   slashTime: 3
-  bounceTime: 5
+  bounceTime: 2
   bounceMinForce: 15
   audioSource: {fileID: 5643076816821024097}
   walkingClips:

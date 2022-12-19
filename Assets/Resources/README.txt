@@ -1,0 +1,1 @@
+Whenever Resources.Load is invoked, it'll search this folder for the appropriate object with the given name.

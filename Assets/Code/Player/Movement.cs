@@ -300,35 +300,53 @@ public class Movement : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// Make this character bounce in the given direction
+    /// </summary>
+    /// <param name="direction">The direction of the bounce</param>
     public void Bounce(Vector3 direction)
     {
-        rb.velocity = direction * bounceMinForce;
-        bounceCoroutine = StartCoroutine(BounceCoroutine());
+        // Start coroutine only if this character is not bouncing already
+        if(!_isBouncing)
+        {
+            rb.velocity = direction * bounceMinForce;
+            bounceCoroutine = StartCoroutine(BounceCoroutine());
+        }
     }
 
     public void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.tag == "Player")
+        if (_isDashing) // Make the other player bounce!
         {
-            if(_isDashing) // Make the other player bounce!
+            if (collision.collider.tag == "Player")
             {
                 // Stop dashing
                 StopCoroutine(dashCoroutine);
                 _isDashing = false;
-                rb.velocity = Vector3.zero;
+                rb.velocity = -rb.velocity;//Vector3.zero;
 
                 // Make the other guy bounce in the direction of the hit
                 Vector3 bounceDir = (collision.collider.transform.position - transform.position).normalized;
                 collision.collider.GetComponent<Movement>().Bounce(bounceDir);
+
+                VFXFactory.CreateVFX(VFX.HIT2, collision.collider.transform.position);
             }
         }
-        else
+        else if (_isBouncing)
         {
-            if(_isBouncing)
+            // If this character bounces into another caracter, make them bounce as well
+            if (collision.collider.tag == "Player")
             {
-                // Reflect the vector
-                rb.velocity = Vector3.Reflect(rb.velocity, collision.GetContact(0).normal);
+                Vector3 bounceDir = (collision.collider.transform.position - transform.position).normalized;
+                collision.collider.GetComponent<Movement>().Bounce(bounceDir);
+
+                VFXFactory.CreateVFX(VFX.HIT2, collision.collider.transform.position);
             }
+
+                // Reflect the vector
+            rb.velocity = Vector3.Reflect(rb.velocity, collision.GetContact(0).normal);
+
+            VFXFactory.CreateVFX(VFX.HIT1, collision.GetContact(0).point);
         }
     }
 
@@ -377,8 +395,17 @@ public class Movement : MonoBehaviour
             // TODO allow bounceForce to grow if the player is hit more than once
             // TODO validate if hitting a bouncing player is possible and fun
 
-            // While the player is bouncing, maintain the bounceSpeed
-            rb.velocity = rb.velocity.normalized * bounceMinForce;
+            // If the player is stuck in a wall, induce a new random velocity
+            if(rb.velocity.magnitude < 1)
+            {
+                Vector3 newVelocity = UnityEngine.Random.onUnitSphere;
+                newVelocity.y = 0;
+                newVelocity = newVelocity.normalized * bounceMinForce;
+                rb.velocity = newVelocity;
+            }
+
+            // While the player is bouncing, maintain the bounceSpeed, negate the Y factor to prevent the character shooting upwards
+            rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z).normalized * bounceMinForce;
             yield return null;
         }
 
