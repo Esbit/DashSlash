@@ -28,7 +28,8 @@ public class DamageableController : MonoBehaviour
         if (health <= 0.0F)
         {
             /*animator.SetTrigger(deathHash);*/
-            gameObject.SetActive(false);        
+            Destroy(gameObject);
+            GameController.Instance.CharacterKilled();
         }
         else
         {
@@ -36,6 +37,14 @@ public class DamageableController : MonoBehaviour
         }
 
        /* animator.ResetTrigger(takeDamageHash);*/
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.layer == 4) //check the int value in layer manager(User Defined starts at 8) 
+        {
+            TakeDamage(2);
+        }
     }
 
     /*public void OnDie()

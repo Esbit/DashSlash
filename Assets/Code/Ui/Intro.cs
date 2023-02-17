@@ -10,14 +10,15 @@ public class Intro : MonoBehaviour
     float time = 30f;
     [SerializeField]
     string nombre;
-    void Start()
-    {
-        StartCoroutine(Wait());
-    }
 
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(time);
         SceneManager.LoadScene(nombre);
+    }
+
+    public void ShowWin()
+    {
+        StartCoroutine(Wait());
     }
 }
