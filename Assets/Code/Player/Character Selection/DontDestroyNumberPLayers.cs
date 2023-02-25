@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DontDestroyNumberPLayers : MonoBehaviour
 {
-    int players = 0;
+    public int players = 0;
     // Start is called before the first frame update
     void Start()
     {
