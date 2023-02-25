@@ -6,11 +6,14 @@ public class GameController : MonoBehaviour
 {
     public GameObject CanvasUI;
     public Intro SceneLoader;
+    PlayerManager players;
     public int AmountCharacters = 0;
 
     public static GameController Instance { get; private set; }
     private void Awake()
     {
+        players = FindObjectOfType<PlayerManager>();
+        AmountCharacters = players.players;
         // If there is an instance, and it's not me, delete myself.
 
         if (Instance != null && Instance != this)

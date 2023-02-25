@@ -11,9 +11,13 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return) && SceneManager.GetActiveScene().name == "CHARACTERS")
         {
             PlayGame();
+        }
+        if (Input.GetKeyDown(KeyCode.Return) && SceneManager.GetActiveScene().name == "COMING SOON")
+        {
+            Main();
         }
     }
     public void PlayGame()
