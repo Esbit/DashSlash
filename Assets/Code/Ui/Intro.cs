@@ -11,6 +11,13 @@ public class Intro : MonoBehaviour
     [SerializeField]
     string nombre;
 
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "JUEGO" || SceneManager.GetActiveScene().name == "COMING SOON")
+            return;
+        StartCoroutine(Wait());
+    }
+
     IEnumerator Wait()
     {
         yield return new WaitForSeconds(time);
