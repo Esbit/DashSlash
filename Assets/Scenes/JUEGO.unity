@@ -10839,6 +10839,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5643076816821024100, guid: f3d9a167f455814448744de9bb651fc5,
         type: 3}
+      propertyPath: bounceTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643076816821024100, guid: f3d9a167f455814448744de9bb651fc5,
+        type: 3}
       propertyPath: dashPowerMax
       value: 40
       objectReference: {fileID: 0}
@@ -12020,6 +12025,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5643076816821024100, guid: f3d9a167f455814448744de9bb651fc5,
         type: 3}
+      propertyPath: bounceTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5643076816821024100, guid: f3d9a167f455814448744de9bb651fc5,
+        type: 3}
       propertyPath: dashPowerMax
       value: 40
       objectReference: {fileID: 0}
@@ -12160,6 +12170,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5672416226668362227, guid: f5f9ddfc73518874fab36e2d82627035,
         type: 3}
+      propertyPath: bounceTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5672416226668362227, guid: f5f9ddfc73518874fab36e2d82627035,
+        type: 3}
       propertyPath: dashPowerMax
       value: 40
       objectReference: {fileID: 0}
@@ -12196,12 +12211,17 @@ PrefabInstance:
     - target: {fileID: 215950638299672864, guid: a1de214e540d25441a66c2ed862de3f6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 215950638299672864, guid: a1de214e540d25441a66c2ed862de3f6,
         type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 215950638299672868, guid: a1de214e540d25441a66c2ed862de3f6,
+        type: 3}
+      propertyPath: bounceTime
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 215950638299672868, guid: a1de214e540d25441a66c2ed862de3f6,
         type: 3}
@@ -12456,12 +12476,17 @@ PrefabInstance:
     - target: {fileID: 8623267552051617196, guid: 391cb9ad8b289ff46bf76bc44161c443,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8623267552051617196, guid: 391cb9ad8b289ff46bf76bc44161c443,
         type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 9000391671740892946, guid: 391cb9ad8b289ff46bf76bc44161c443,
+        type: 3}
+      propertyPath: bounceTime
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9000391671740892946, guid: 391cb9ad8b289ff46bf76bc44161c443,
         type: 3}
