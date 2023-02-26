@@ -452,7 +452,7 @@ public class Movement : MonoBehaviour
     {
         //Debug.Log("DashPower: " + dashPower);
         dashCoroutine = StartCoroutine(DashCoroutine());
-        slashCoroutine = StartCoroutine(SlashCoroutine());
+        //slashCoroutine = StartCoroutine(SlashCoroutine());
     }
 
     private void ExecuteBadDash()

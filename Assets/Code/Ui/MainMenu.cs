@@ -11,11 +11,11 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && SceneManager.GetActiveScene().name == "CHARACTERS")
+        if ((Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Submit")) && SceneManager.GetActiveScene().name == "CHARACTERS")
         {
             PlayGame();
         }
-        if (Input.GetKeyDown(KeyCode.Return) && SceneManager.GetActiveScene().name == "COMING SOON")
+        if ((Input.GetKeyDown(KeyCode.Return) || Input.GetButtonDown("Submit")) && SceneManager.GetActiveScene().name == "COMING SOON")
         {
             Main();
         }

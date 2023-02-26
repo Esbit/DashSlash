@@ -875,8 +875,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.3499006, y: -0.07568564, z: 0.02837527, w: 0.93329316}
-  m_LocalPosition: {x: 0.82654357, y: 5.3882074, z: -5.790898}
+  m_LocalRotation: {x: 0.3499006, y: -0.07568565, z: 0.028375277, w: 0.93329316}
+  m_LocalPosition: {x: 0.8253023, y: 5.381487, z: -5.7832947}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2229,7 +2229,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679977829}
-  m_LocalRotation: {x: 0.3499006, y: -0.07568564, z: 0.02837527, w: 0.93329316}
+  m_LocalRotation: {x: 0.3499006, y: -0.07568565, z: 0.028375277, w: 0.93329316}
   m_LocalPosition: {x: 0.9068127, y: 5.8228273, z: -6.2825494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10840,12 +10840,12 @@ PrefabInstance:
     - target: {fileID: 5643076816821024100, guid: f3d9a167f455814448744de9bb651fc5,
         type: 3}
       propertyPath: dashPowerMax
-      value: 60
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5643076816821024100, guid: f3d9a167f455814448744de9bb651fc5,
         type: 3}
       propertyPath: dashPowerMin
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5643076816821024100, guid: f3d9a167f455814448744de9bb651fc5,
         type: 3}
@@ -12021,12 +12021,12 @@ PrefabInstance:
     - target: {fileID: 5643076816821024100, guid: f3d9a167f455814448744de9bb651fc5,
         type: 3}
       propertyPath: dashPowerMax
-      value: 60
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5643076816821024100, guid: f3d9a167f455814448744de9bb651fc5,
         type: 3}
       propertyPath: dashPowerMin
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5643076816821024100, guid: f3d9a167f455814448744de9bb651fc5,
         type: 3}
@@ -12161,12 +12161,12 @@ PrefabInstance:
     - target: {fileID: 5672416226668362227, guid: f5f9ddfc73518874fab36e2d82627035,
         type: 3}
       propertyPath: dashPowerMax
-      value: 60
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5672416226668362227, guid: f5f9ddfc73518874fab36e2d82627035,
         type: 3}
       propertyPath: dashPowerMin
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5672416226668362227, guid: f5f9ddfc73518874fab36e2d82627035,
         type: 3}
@@ -12196,7 +12196,7 @@ PrefabInstance:
     - target: {fileID: 215950638299672864, guid: a1de214e540d25441a66c2ed862de3f6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 215950638299672864, guid: a1de214e540d25441a66c2ed862de3f6,
         type: 3}
@@ -12206,12 +12206,12 @@ PrefabInstance:
     - target: {fileID: 215950638299672868, guid: a1de214e540d25441a66c2ed862de3f6,
         type: 3}
       propertyPath: dashPowerMax
-      value: 60
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 215950638299672868, guid: a1de214e540d25441a66c2ed862de3f6,
         type: 3}
       propertyPath: dashPowerMin
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 215950638299672868, guid: a1de214e540d25441a66c2ed862de3f6,
         type: 3}
@@ -12456,7 +12456,7 @@ PrefabInstance:
     - target: {fileID: 8623267552051617196, guid: 391cb9ad8b289ff46bf76bc44161c443,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8623267552051617196, guid: 391cb9ad8b289ff46bf76bc44161c443,
         type: 3}
@@ -12466,12 +12466,12 @@ PrefabInstance:
     - target: {fileID: 9000391671740892946, guid: 391cb9ad8b289ff46bf76bc44161c443,
         type: 3}
       propertyPath: dashPowerMax
-      value: 60
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 9000391671740892946, guid: 391cb9ad8b289ff46bf76bc44161c443,
         type: 3}
       propertyPath: dashPowerMin
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9000391671740892946, guid: 391cb9ad8b289ff46bf76bc44161c443,
         type: 3}

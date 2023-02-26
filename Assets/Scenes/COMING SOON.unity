@@ -234,7 +234,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 268.37, y: -193.24}
+  m_AnchoredPosition: {x: 411, y: -204}
   m_SizeDelta: {x: 754.748, y: 188.687}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &71680415
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'PRESS ENTER TO CONTINUE
+  m_text: 'PRESS START/ENTER TO CONTINUE
 
 '
   m_isRightToLeft: 0
@@ -322,7 +322,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -140.32086, w: 0}
+  m_margin: {x: 0, y: 0, z: 102.50629, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
