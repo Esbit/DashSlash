@@ -107,7 +107,9 @@ public class Movement : MonoBehaviour
     int isWalkingHash; 
     int isSlashingHash;
     int isChargingHash;
+    int isDashStartHash;
     int isDashingHash;
+    int isDashEndHash;
     int isDeadHash;
     int isStunnedHash;
 
@@ -127,7 +129,9 @@ public class Movement : MonoBehaviour
         isWalkingHash = Animator.StringToHash("isWalking");
         isSlashingHash = Animator.StringToHash("isSlashing");
         isChargingHash = Animator.StringToHash("isCharging");
+        isDashStartHash = Animator.StringToHash("isDashStart");
         isDashingHash = Animator.StringToHash("isDashing");
+        isDashEndHash = Animator.StringToHash("isDashEnd");
         isDeadHash = Animator.StringToHash("isDead");
         isStunnedHash = Animator.StringToHash("isStunned");
     }
@@ -139,7 +143,9 @@ public class Movement : MonoBehaviour
         bool isWalking = animator.GetBool(isWalkingHash);
         bool isSlashing = animator.GetBool(isSlashingHash);
         bool isCharging = animator.GetBool(isChargingHash);
+        bool isDashStart = animator.GetBool(isDashStartHash);
         bool isDashing = animator.GetBool(isDashingHash);
+        bool isDashEnd = animator.GetBool(isDashEndHash);
         bool isDead = animator.GetBool(isDeadHash);
         bool isStunned = animator.GetBool(isStunnedHash);
 
@@ -179,7 +185,7 @@ public class Movement : MonoBehaviour
             animator.SetBool(isChargingHash, true);
             _timePressingDash += Time.deltaTime;
             _chargeTimer = (Time.time / 0.1f);
-            animator.SetLayerWeight(1,Mathf.Lerp(0,0.6f, _chargeTimer));
+            //animator.SetLayerWeight(1,Mathf.Lerp(0,1, _chargeTimer));
 
             dashIndicator.transform.position = transform.position + transform.forward * _timePressingDash + Vector3.up * 0.1f;
             
@@ -194,10 +200,11 @@ public class Movement : MonoBehaviour
             {
                 _isPressingDash = false;
                 animator.SetBool(isChargingHash, false);
-                //animator.SetBool(isStunnedHash, true);
-                //if(Time.time > 1f)
-                //   animator.SetBool(isStunnedHash, false);
-                //nextDashTime = Time.time;
+                //animator.SetLayerWeight(1,0);
+                animator.SetBool(isStunnedHash, true);
+                if(Time.time > 1f)
+                   animator.SetBool(isStunnedHash, false);
+                nextDashTime = Time.time;
                 ExecuteBadDash();
 
                 dashIndicator.SetActive(false);
@@ -291,11 +298,12 @@ public class Movement : MonoBehaviour
                 dashPower = dashPowerMax;
             audioSource.Stop();
             _chargeTimer = (Time.time / 0.1f);
-            animator.SetBool(isChargingHash, true);
-            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0, _chargeTimer));
+            //animator.SetBool(isChargingHash, true);
+            animator.SetBool(isDashingHash, true);
+            //animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0, _chargeTimer));
             nextDashTime = Time.time;
             _isPressingDash = false;
-            _canAttack = true;
+            //_canAttack = true;
             ExecuteDash(Mathf.Clamp(_timePressingDash, 0.5f, 4f));
         }
     }
@@ -316,8 +324,11 @@ public class Movement : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Colisiona");
         if (_isDashing) // Make the other player bounce!
         {
+            Debug.Log("isDashing Colisiona");
+            StartCoroutine(StopAnimationCoroutine());
             if (collision.collider.tag == "Player")
             {
                 // Stop dashing
@@ -335,6 +346,7 @@ public class Movement : MonoBehaviour
         else if (_isBouncing)
         {
             // If this character bounces into another caracter, make them bounce as well
+            StartCoroutine(StopAnimationCoroutine());
             if (collision.collider.tag == "Player")
             {
                 Vector3 bounceDir = (collision.collider.transform.position - transform.position).normalized;
@@ -355,8 +367,12 @@ public class Movement : MonoBehaviour
     //Slash & Dash Coroutines
     private IEnumerator DashCoroutine()
     {
+        const float clipDuration = 0.1723333333333333f;
+        yield return new WaitForSeconds(clipDuration);
         _isDashing = true;
         float startTime = Time.time; // need to remember this to know how long to dash
+        // ANIMATOR
+        animator.SetBool(isDashingHash, true);
         Vector3 move = transform.forward; //new Vector3(movementInput.x, 0, movementInput.y).normalized;
         while (Time.time < startTime + dashTime)
         {
@@ -374,8 +390,25 @@ public class Movement : MonoBehaviour
             // or controller.Move(...), dunno about that script
             yield return null; // this will make Unity stop here and continue next frame
         }
+        animator.SetBool(isDashEndHash, true);
+        animator.SetBool(isDashingHash, false);
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool(isChargingHash, false);
+        animator.SetBool(isDashEndHash, false);
         _isDashing = false;
     }
+
+    private IEnumerator StopAnimationCoroutine()
+    {
+        animator.SetBool(isDashEndHash, true);
+        animator.SetBool(isDashingHash, false);
+        yield return new WaitForSeconds(0.4f);
+        animator.SetBool(isChargingHash, false);
+        animator.SetBool(isDashEndHash, false);
+        bool isDashEnd = animator.GetBool(isDashEndHash);
+        Debug.Log(isDashEnd);
+    }
+ 
     private IEnumerator SlashCoroutine()
     {
         yield return new WaitForSeconds(dashTime + slashTime);

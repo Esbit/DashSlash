@@ -875,8 +875,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.3499006, y: -0.07568565, z: 0.02837527, w: 0.9332932}
-  m_LocalPosition: {x: 0.82073617, y: 5.356763, z: -5.7553267}
+  m_LocalRotation: {x: 0.3499006, y: -0.07568564, z: 0.02837527, w: 0.93329316}
+  m_LocalPosition: {x: 0.82654357, y: 5.3882074, z: -5.790898}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2229,7 +2229,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679977829}
-  m_LocalRotation: {x: 0.3499006, y: -0.07568565, z: 0.02837527, w: 0.9332932}
+  m_LocalRotation: {x: 0.3499006, y: -0.07568564, z: 0.02837527, w: 0.93329316}
   m_LocalPosition: {x: 0.9068127, y: 5.8228273, z: -6.2825494}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2662,6 +2662,7 @@ MonoBehaviour:
   player3: {fileID: 1652034591486470407}
   player4: {fileID: 244335733390006492}
   dummy: {fileID: 1718396475}
+  players: 0
 --- !u!4 &751499146
 Transform:
   m_ObjectHideFlags: 0
@@ -11059,6 +11060,9 @@ MonoBehaviour:
   - target: {fileID: 1354735768543405362}
     weight: 1
     radius: 0
+  - target: {fileID: 1718396474}
+    weight: 1
+    radius: 0
 --- !u!4 &1755817751
 Transform:
   m_ObjectHideFlags: 0
@@ -11944,6 +11948,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5643076816821024026, guid: f3d9a167f455814448744de9bb651fc5,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5643076816821024096, guid: f3d9a167f455814448744de9bb651fc5,
         type: 3}
       propertyPath: m_DefaultControlScheme
@@ -12137,7 +12146,7 @@ PrefabInstance:
     - target: {fileID: 5672416226668362226, guid: f5f9ddfc73518874fab36e2d82627035,
         type: 3}
       propertyPath: m_Name
-      value: P_Koala
+      value: Koala
       objectReference: {fileID: 0}
     - target: {fileID: 5672416226668362226, guid: f5f9ddfc73518874fab36e2d82627035,
         type: 3}
