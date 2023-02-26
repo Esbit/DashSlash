@@ -442,6 +442,8 @@ public class Movement : MonoBehaviour
             yield return null;
         }
 
+        bounceTime = bounceTime + 0.1f;
+        bounceMinForce = bounceMinForce + 1;
         _isBouncing = false;
 
         print("STOP BOUNCING!!");
