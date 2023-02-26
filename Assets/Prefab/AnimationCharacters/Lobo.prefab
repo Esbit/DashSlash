@@ -89,57 +89,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: '
-
-    Transform ''hand_l'' has been deleted
-
-    Transform ''lowerarm_l''
-    has been deleted
-
-    Transform ''upperArm_l'' has been deleted
-
-    Transform
-    ''clavicle_l'' has been deleted
-
-    Transform ''hand_r'' has been deleted
-
-    Transform
-    ''lowerarm_r'' has been deleted
-
-    Transform ''upperArm_r'' has been deleted
-
-    Transform
-    ''clavicle_r'' has been deleted
-
-    Transform ''head'' has been deleted
-
-    Transform
-    ''neck_01'' has been deleted
-
-    Transform ''spine_03'' has been deleted
-
-    Transform
-    ''spine_02'' has been deleted
-
-    Transform ''spine_01'' has been deleted
-
-    Transform
-    ''foot_l'' has been deleted
-
-    Transform ''calf_l'' has been deleted
-
-    Transform
-    ''thigh_l'' has been deleted
-
-    Transform ''foot_r'' has been deleted
-
-    Transform
-    ''calf_r'' has been deleted
-
-    Transform ''thigh_r'' has been deleted
-
-    Transform
-    ''pelvis'' has been deleted'
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
@@ -616,6 +566,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4447638762617047554, guid: d1506b706b0bcdd49afd34b97354f72b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 924f233209b6443039a0cae8b5bdfd98, type: 2}
     - target: {fileID: 919132149155446097, guid: d1506b706b0bcdd49afd34b97354f72b,
         type: 3}
       propertyPath: m_Name

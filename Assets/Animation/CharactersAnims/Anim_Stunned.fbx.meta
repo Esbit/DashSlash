@@ -1,11 +1,14 @@
 fileFormatVersion: 2
-guid: 957bb7893f624cb4e89baae686ea1bde
+guid: be61a79e9ccab6942ba7e24cf7ba20db
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
-      74: 1827226128182048838
-    second: DashLoop
+      74: -203655887218126122
+    second: mixamo.com
+  - first:
+      74: -2861340925227477554
+    second: Stunned
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -20,16 +23,9 @@ ModelImporter:
     removeConstantScaleCurves: 1
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
-      copied configuration does not match position in animation file:\n\t'thigh_l'
-      : position error = 337.996033 mm\n\t'thigh_r' : position error = 226.635422
-      mm\n"
+    rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
-      might lower retargeting quality:\nNote: Activate translation DOF on avatar
-      to improve retargeting quality.\n\t'spine_01' has translation animation that
-      will be discarded.\n\t'thigh_l' has translation animation that will be discarded.\n\t'thigh_r'
-      has translation animation that will be discarded.\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -43,11 +39,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: DashLoop
-      takeName: Take 001
+      name: Stunned
+      takeName: mixamo.com
       internalID: 0
-      firstFrame: 50
-      lastFrame: 60
+      firstFrame: 121
+      lastFrame: 181
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -70,7 +66,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1.8
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []

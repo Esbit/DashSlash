@@ -182,10 +182,10 @@ public class Movement : MonoBehaviour
         {
             dashIndicator.SetActive(true);
 
-            //animator.SetBool(isChargingHash, true);
+            animator.SetBool(isChargingHash, true);
             _timePressingDash += Time.deltaTime;
             _chargeTimer = (Time.time / 0.1f);
-            animator.SetLayerWeight(1,Mathf.Lerp(0,1, _chargeTimer));
+            //animator.SetLayerWeight(1,Mathf.Lerp(0,1, _chargeTimer));
 
             dashIndicator.transform.position = transform.position + transform.forward * _timePressingDash + Vector3.up * 0.1f;
             
@@ -200,10 +200,11 @@ public class Movement : MonoBehaviour
             {
                 _isPressingDash = false;
                 animator.SetBool(isChargingHash, false);
-                //animator.SetBool(isStunnedHash, true);
-                //if(Time.time > 1f)
-                //   animator.SetBool(isStunnedHash, false);
-                //nextDashTime = Time.time;
+                //animator.SetLayerWeight(1,0);
+                animator.SetBool(isStunnedHash, true);
+                if(Time.time > 1f)
+                   animator.SetBool(isStunnedHash, false);
+                nextDashTime = Time.time;
                 ExecuteBadDash();
 
                 dashIndicator.SetActive(false);
@@ -299,7 +300,7 @@ public class Movement : MonoBehaviour
             _chargeTimer = (Time.time / 0.1f);
             //animator.SetBool(isChargingHash, true);
             animator.SetBool(isDashingHash, true);
-            animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0, _chargeTimer));
+            //animator.SetLayerWeight(1, Mathf.Lerp(animator.GetLayerWeight(1), 0, _chargeTimer));
             nextDashTime = Time.time;
             _isPressingDash = false;
             //_canAttack = true;
@@ -323,8 +324,11 @@ public class Movement : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Colisiona");
         if (_isDashing) // Make the other player bounce!
         {
+            Debug.Log("isDashing Colisiona");
+            StartCoroutine(StopAnimationCoroutine());
             if (collision.collider.tag == "Player")
             {
                 // Stop dashing
@@ -342,6 +346,7 @@ public class Movement : MonoBehaviour
         else if (_isBouncing)
         {
             // If this character bounces into another caracter, make them bounce as well
+            StartCoroutine(StopAnimationCoroutine());
             if (collision.collider.tag == "Player")
             {
                 Vector3 bounceDir = (collision.collider.transform.position - transform.position).normalized;
@@ -362,8 +367,8 @@ public class Movement : MonoBehaviour
     //Slash & Dash Coroutines
     private IEnumerator DashCoroutine()
     {
-        //const float clipDuration = 0.5f;
-        //yield return new WaitForSeconds(clipDuration);
+        const float clipDuration = 0.1723333333333333f;
+        yield return new WaitForSeconds(clipDuration);
         _isDashing = true;
         float startTime = Time.time; // need to remember this to know how long to dash
         // ANIMATOR
@@ -385,8 +390,25 @@ public class Movement : MonoBehaviour
             // or controller.Move(...), dunno about that script
             yield return null; // this will make Unity stop here and continue next frame
         }
+        animator.SetBool(isDashEndHash, true);
+        animator.SetBool(isDashingHash, false);
+        yield return new WaitForSeconds(0.5f);
+        animator.SetBool(isChargingHash, false);
+        animator.SetBool(isDashEndHash, false);
         _isDashing = false;
     }
+
+    private IEnumerator StopAnimationCoroutine()
+    {
+        animator.SetBool(isDashEndHash, true);
+        animator.SetBool(isDashingHash, false);
+        yield return new WaitForSeconds(0.4f);
+        animator.SetBool(isChargingHash, false);
+        animator.SetBool(isDashEndHash, false);
+        bool isDashEnd = animator.GetBool(isDashEndHash);
+        Debug.Log(isDashEnd);
+    }
+ 
     private IEnumerator SlashCoroutine()
     {
         yield return new WaitForSeconds(dashTime + slashTime);

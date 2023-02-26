@@ -485,6 +485,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Alce_Fixed
       objectReference: {fileID: 0}
+    - target: {fileID: 5275389711263246403, guid: 1b53a58da6e32fe4490abf2ca65470b6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d71bbc69158c941ef8c5f76bd776a672, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b53a58da6e32fe4490abf2ca65470b6, type: 3}
 --- !u!4 &7467571843516610143 stripped
