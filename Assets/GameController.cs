@@ -6,14 +6,15 @@ public class GameController : MonoBehaviour
 {
     public GameObject CanvasUI;
     public Intro SceneLoader;
-    PlayerManager players;
+    DontDestroyNumberPLayers players;
     public int AmountCharacters = 0;
 
     public static GameController Instance { get; private set; }
     private void Awake()
     {
-        players = FindObjectOfType<PlayerManager>();
+        players = FindObjectOfType<DontDestroyNumberPLayers>();
         AmountCharacters = players.players;
+        Debug.Log(AmountCharacters);
         // If there is an instance, and it's not me, delete myself.
 
         if (Instance != null && Instance != this)
@@ -29,7 +30,7 @@ public class GameController : MonoBehaviour
     public void CharacterKilled()
     {
         AmountCharacters--;
-        if (AmountCharacters <= 0)
+        if (AmountCharacters <= 1)
         {
             CanvasUI.SetActive(true);
             SceneLoader.ShowWin();
