@@ -19,12 +19,18 @@ public class CharacterSwitcher : MonoBehaviour
     void Start()
     {
         manager = GetComponent<PlayerInputManager>();
-        manager.playerPrefab = players[index];
+        manager.playerPrefab = players[0];
         index++;
     }
 
     public void SwitchNextSpawnPlayer(PlayerInput input)
     {
+        var prevIndex = 0;
+        if (index == 4)
+        {
+            prevIndex = index;
+            index = 3;
+        }
         manager.playerPrefab = players[index];
         OnPlayerJoined(input);
         if(index == 1)
@@ -33,9 +39,12 @@ public class CharacterSwitcher : MonoBehaviour
             Join2.SetActive(false);
         if (index == 3)
             Join3.SetActive(false);
-        if (index == 4)
+        if (prevIndex == 4)
             Join4.SetActive(false);
-        index++;
+        if (index < 5)
+        {
+            index++;
+        }
     }
 
     void OnPlayerJoined(PlayerInput playerInput)

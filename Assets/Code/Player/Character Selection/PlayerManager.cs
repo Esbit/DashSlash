@@ -39,7 +39,7 @@ public class PlayerManager : MonoBehaviour
             player1.SetActive(true);
             player2.SetActive(true);
             player3.SetActive(true);
-            player1.SetActive(true);
+            player4.SetActive(true);
         }
     }
 
