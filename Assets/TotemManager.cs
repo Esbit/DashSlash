@@ -14,14 +14,14 @@ public class TotemManager : MonoBehaviour
     {
         if (active)
         {
-            ButtonText.text = "Hide information";
+            ButtonText.text = "Hide avatars";
             totemData.SetActive(true);
             active = false;
 
         }
         else
         {
-            ButtonText.text = "Show information";
+            ButtonText.text = "Show avatars";
             totemData.SetActive(false);
             active = true;
         }

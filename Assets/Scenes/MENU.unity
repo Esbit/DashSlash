@@ -982,7 +982,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Show information
+  m_text: Show avatars
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9197500d44dd2ed42bfa00c9095016e8, type: 2}
   m_sharedMaterial: {fileID: 2316073144446765275, guid: 9197500d44dd2ed42bfa00c9095016e8,
@@ -4731,8 +4731,8 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 1
   m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
+  m_ChildScaleWidth: 1
+  m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
 --- !u!1 &1162893469
 GameObject:
